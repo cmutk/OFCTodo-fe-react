@@ -1,0 +1,61 @@
+@-ms-viewport {
+  width: device-width;
+}
+:root {
+  --clr-header-shadow: #1e326a;
+  --clr-new-task-shadow: #501459;
+  --clr-completed-shadow: #0e990b;
+  --clr-current-shadow: #c55b0d;
+  --clr-urgent-shadow: #aa2975;
+  --clr-long-term-shadow: #0f917c;
+  --clr-header-primary: #213776;
+  --clr-new-task-primary: #721c7f;
+  --clr-completed-primary: #0fa10c;
+  --clr-current-primary: #cf600e;
+  --clr-urgent-primary: #b92d7f;
+  --clr-long-term-primary: #109983;
+}
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+input {
+  box-sizing: border-box;
+  height: 1.5rem;
+}
+
+textarea {
+  resize: none;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  padding: 0;
+}
+
+
+
+@media (min-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 960px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1100px) {
+  body {
+    font-size: 1.5rem;
+  }
+}
