@@ -1,4 +1,4 @@
-.navbar-header {
+header > nav {
     overflow: hidden;
     display: flex;
     justify-content: space-around;
@@ -7,12 +7,12 @@
     background-color: var(--clr-header-primary);
     box-shadow: 2px 2px 4px var(--clr-header-shadow), -2px -2px 4px #ffffff;
   }
-  .navbar-header-newtask{
+  .navbar-animation{
     cursor: pointer;
     transition: transform 200ms ease-in-out;
     transform: scale(1);
   }
-  .navbar-header-newtask:hover{
+  .navbar-animation:hover{
   transform: scale(1.1);
   }
   
@@ -22,6 +22,7 @@
   
   .navbar-logo {
     all:unset;
+    cursor: pointer;
     font-family: "Merienda One", cursive;
     font-size: 24px;
     background-color: transparent;
@@ -64,6 +65,7 @@
   }
   
   .navbar-container button {
+    all:unset;
     display: flex;
     justify-content: space-evenly;
     font-size: 1rem;
@@ -73,6 +75,13 @@
     font-family: "Merienda One", cursive;
     color: white;
     text-align: center;
+    padding: 14px 16px;
+  }
+  .navbar-container a{
+    text-decoration: unset;
+    font-weight:600;
+    color: white;
+    font-size: 1rem;
     padding: 14px 16px;
   }
 
@@ -95,7 +104,7 @@
   }
 
   @media only screen and (max-width: 767px){
-    .navbar-header {
+    header > nav {
         display: flex;
         justify-content: space-between;
       }
