@@ -1,0 +1,132 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.navbar-animation {
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+  transform: scale(1);
+}
+.navbar-animation:hover {
+  transform: scale(1.1);
+}
+
+.navbar-back-button {
+  display: none;
+}
+
+.navbar-logo {
+  all: unset;
+  cursor: pointer;
+  font-family: "Merienda One", cursive;
+  font-size: 24px;
+  background-color: transparent;
+  color: white;
+  padding: 14px 16px;
+  border-style: none;
+}
+.search-bar-container {
+  font-size: 16px;
+  padding: 14px 16px;
+  font-weight: bold;
+  color: white;
+}
+.search-bar-input {
+  width: 30vw;
+  text-align: center;
+  font-size: 1rem;
+  padding: 15px 16px;
+  border-radius: 14px 0px 0px 14px;
+  border-width: 1px;
+}
+.search-bar-submit-button {
+  cursor: pointer;
+  float: right;
+  display: block;
+  margin: 0 2px;
+  padding: 3px 14px;
+  color: #007b95;
+  border-radius: 0px 14px 14px 0px;
+  border-color: #007b95;
+  border-style: solid;
+  border-width: 1px;
+  background-color: white;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container button {
+  all: unset;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1rem;
+  background-color: transparent;
+  border-style: none;
+  font-weight: 600;
+  font-family: "Merienda One", cursive;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+}
+.navbar-container a {
+  text-decoration: unset;
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  padding: 14px 16px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .search-bar-submit-button {
+    display: none;
+  }
+
+  .navbar-back-button {
+    display: flex;
+    background-color: transparent;
+    all: unset;
+    outline: none;
+    border-style: none;
+    padding: 14px 16px;
+  }
+
+  .search-bar-input {
+    border-radius: 14px 14px 14px 14px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  nav {
+    justify-content: space-between;
+  }
+  .navbar-container {
+    display: none;
+    float: right;
+  }
+
+  .navbar-logo {
+    font-family: "Merienda One", cursive;
+    font-size: 1rem;
+    background-color: transparent;
+    color: white;
+    padding: 14px 16px;
+    border-style: none;
+  }
+  .navbar-back-button {
+    display: flex;
+  }
+
+  .search-bar-container {
+    display: none;
+    width: 60vw;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 14px 14px 14px 14px;
+    border-width: 1px;
+  }
+}
