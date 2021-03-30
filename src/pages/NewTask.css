@@ -11,7 +11,10 @@
   background-color: rgba(var(--clr-new-task-primary), 0.85);
   border-radius: 4px;
 }
-
+form {
+  display: contents;
+  margin: 0px;
+}
 .newtask-container {
   display: flex;
   flex-direction: column;
