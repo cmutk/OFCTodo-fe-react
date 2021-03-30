@@ -1,4 +1,4 @@
-import React,{useState,useRef,useEffect} from 'react';
+import React,{useState,useRef} from 'react';
 import './NewTask.css';
 import InputContainer from '../components/InputContainer.js';
 import { IoToggleSharp } from "react-icons/io5";
@@ -14,16 +14,21 @@ function NewTask(props) {
   const startDateInput= useRef(null);
   const deadlineInput= useRef(null);
   const descriptionInput = useRef(null);
-
- 
   
   const storeTask =(setTasks)=>{
     const name=taskNameInput.current.value;
     const startsFrom=startDateInput.current.value;
     const deadline=deadlineInput.current.value;
     const description =descriptionInput.current.value;
+    const completed =false;
     setTasks(prevTasks=>{
-      return [...prevTasks,{id:uuidv4(), name:name, startsFrom:startsFrom, deadline:deadline, description:description}]
+      return [...prevTasks,{
+        id:uuidv4(),
+        name:name,
+        startsFrom:startsFrom,
+        deadline:deadline,
+        description:description,
+        completed:completed}]
     })
     
 

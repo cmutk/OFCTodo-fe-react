@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{} from 'react';
+import TaskList from '../components/TaskList.js'
 
-function TaskBoard() {
+function TaskBoard(props) {
+console.log('TaskBoard Called!')
     return (
         <div>
-            İ am Taskboard
+            <TaskList tasks={props.tasks}/>
         </div>
     )
 }

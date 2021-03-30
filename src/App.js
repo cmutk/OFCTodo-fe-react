@@ -13,7 +13,6 @@ function App() {
   const LOCAL_STORAGE_KEY_TASKS = 'ofcourse.tasks';
   const tasksOnLocalStorage = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_TASKS))
   const [tasks, setTasks] = useState(tasksOnLocalStorage||[])
- 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY_TASKS, JSON.stringify(tasks))
     
@@ -25,7 +24,7 @@ function App() {
       <Navbar right={<button onClick={()=>{setShow(true)}}> New Task !</button>}/>
       <ModalLarge content={<NewTask onClose={closeModal} setTasks={setTasks}/>} headerOf="newtask" title="New Task" show={show} onClose={closeModal}/>
         <Switch>
-          <Route path="/" exact component={TaskBoard} />
+          <Route path="/" exact render={(props)=>(<TaskBoard {...props} tasks={tasks} />)} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
         </Switch>
