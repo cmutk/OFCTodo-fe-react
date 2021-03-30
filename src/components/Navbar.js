@@ -3,7 +3,7 @@ import './Navbar.css'
 import {useHistory , Link} from "react-router-dom";
 import { MdSearch, MdArrowBack } from "react-icons/md";
 import Header from './Header.js'
-function Navigation() {
+function Navigation(props) {
     const BackButton =({className})=>{
         const styleName=className;
         const history = useHistory();
@@ -33,15 +33,9 @@ function Navigation() {
               </button>
             </div>
             <div className="navbar-container">
-              <HeaderLink page="login" className="navbar-animation" />
-              <HeaderLink page="sign-up" className="navbar-animation" />
-              <button
-                className="navbar-animation"
-                data-open-modal-lg="new-task"
-              >
-                New Task !
-              </button>
-              
+              <HeaderLink page="login"  />
+              <HeaderLink page="sign-up"  />
+              {props.right}            
             </div>
             </nav>
 

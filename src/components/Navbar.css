@@ -3,14 +3,6 @@ nav {
   justify-content: space-around;
   width: 100%;
 }
-.navbar-animation {
-  cursor: pointer;
-  transition: transform 200ms ease-in-out;
-  transform: scale(1);
-}
-.navbar-animation:hover {
-  transform: scale(1.1);
-}
 
 .navbar-back-button {
   display: none;
@@ -60,7 +52,7 @@ nav {
   align-items: center;
 }
 
-.navbar-container button {
+.navbar-container > button {
   all: unset;
   display: flex;
   justify-content: space-evenly;
@@ -72,13 +64,23 @@ nav {
   color: white;
   text-align: center;
   padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+  transform: scale(1);
 }
-.navbar-container a {
+.navbar-container > a {
   text-decoration: unset;
   font-weight: 600;
   color: white;
   font-size: 1rem;
   padding: 14px 16px;
+  cursor: pointer;
+  transition: transform 200ms ease-in-out;
+  transform: scale(1);
+}
+.navbar-container > button:hover,
+.navbar-container > a:hover {
+  transform: scale(1.1);
 }
 
 @media only screen and (max-width: 1024px) {

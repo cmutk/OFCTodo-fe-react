@@ -28,7 +28,7 @@
   transform: scale(0);
 }
 
-.show {
+.modal.show {
   transform: scale(1);
 }
 .modal.lg {
@@ -36,9 +36,6 @@
   bottom: 5%;
   left: 37vw;
   right: 37vw;
-  /* background: white;
-  transition: transform 500ms ease-in;
-  min-height: 10rem; */
   max-height: 800px;
   z-index: 300;
   padding: 1rem, 2rem, 3rem, 2rem;
@@ -48,16 +45,11 @@
   bottom: auto;
   left: 40vw;
   right: 40vw;
-  /* width: auto;
-  background: white;
-  min-height: 10rem;
-  transition: transform 500ms ease-in;
-  overflow-y: hidden; */
   max-height: 800px;
   z-index: 700;
   padding: 1rem, 2rem, 3rem, 2rem;
 }
-.modal-body {
+.modal-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -83,11 +75,6 @@
     bottom: 25%;
     left: 20%;
     right: 20%;
-    /* width: auto;
-    min-height: 10rem;
-    background: white;
-    transition: transform 500ms ease-in;
-    overflow-y: hidden; */
     max-height: 480px;
     z-index: 500;
     border-radius: 8px;
@@ -98,11 +85,6 @@
     bottom: auto;
     left: 10vw;
     right: 10vw;
-    /* width: auto;
-    background: white;
-    min-height: 10rem;
-    transition: transform 500ms ease-in;
-    overflow-y: hidden; */
     max-height: 800px;
     z-index: 700;
     padding: 1rem, 2rem, 3rem, 2rem;

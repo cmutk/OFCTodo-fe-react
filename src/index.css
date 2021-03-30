@@ -1,16 +1,16 @@
 :root {
-  --clr-header-shadow: #1e326a;
-  --clr-new-task-shadow: #501459;
-  --clr-completed-shadow: #0e990b;
-  --clr-current-shadow: #c55b0d;
-  --clr-urgent-shadow: #aa2975;
-  --clr-long-term-shadow: #0f917c;
-  --clr-header-primary: #213776;
-  --clr-new-task-primary: #721c7f;
-  --clr-completed-primary: #0fa10c;
-  --clr-current-primary: #cf600e;
-  --clr-urgent-primary: #b92d7f;
-  --clr-long-term-primary: #109983;
+  --clr-header-shadow: 30, 50, 106;
+  --clr-new-task-shadow: 80, 20, 89;
+  --clr-completed-shadow: 14, 153, 11;
+  --clr-current-shadow: 197, 91, 13;
+  --clr-urgent-shadow: 170, 41, 117;
+  --clr-long-term-shadow: 15, 145, 124;
+  --clr-header-primary: 33, 55, 118;
+  --clr-new-task-primary: 114, 28, 127;
+  --clr-completed-primary: 15, 161, 12;
+  --clr-current-primary: 207, 96, 14;
+  --clr-urgent-primary: 185, 45, 127;
+  --clr-long-term-primary: 16, 153, 131;
 }
 
 html {
@@ -32,6 +32,9 @@ body {
   overflow: hidden;
   font-family: "Quicksand", sans-serif;
 }
+h4 {
+  all: unset;
+}
 ul {
   list-style-type: none;
   padding: 0;
@@ -41,40 +44,42 @@ li {
 }
 
 .bg-color-navbar {
-  background-color: var(--clr-header-primary);
+  background-color: rgb(var(--clr-header-primary));
 }
 .box-shadow-navbar {
-  box-shadow: 2px 2px 6px var(--clr-header-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-header-shadow)), -2px -2px 6px #ffffff;
 }
 .bg-color-newtask {
-  background-color: var(--clr-new-task-primary);
+  background-color: rgb(var(--clr-new-task-primary));
 }
 .box-shadow-newtask {
-  box-shadow: 2px 2px 6px var(--clr-new-task-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-new-task-shadow)), -2px -2px 6px #ffffff;
 }
 .bg-color-completed {
-  background-color: var(--clr-completed-primary);
+  background-color: rgb(var(--clr-completed-primary));
 }
 .box-shadow-completed {
-  box-shadow: 2px 2px 6px var(--clr-completed-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-completed-shadow)),
+    -2px -2px 6px #ffffff;
 }
 .bg-color-current {
-  background-color: var(--clr-current-primary);
+  background-color: rgb(var(--clr-current-primary));
 }
 .box-shadow-current {
-  box-shadow: 2px 2px 6px var(--clr-current-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-current-shadow)), -2px -2px 6px #ffffff;
 }
 .bg-color-urgent {
-  background-color: var(--clr-urgent-primary);
+  background-color: rgb(var(--clr-urgent-primary));
 }
 .box-shadow-urgent {
-  box-shadow: 2px 2px 6px var(--clr-urgent-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-urgent-shadow)), -2px -2px 6px #ffffff;
 }
 .bg-color-longterm {
-  background-color: var(--clr-long-term-primary);
+  background-color: rgb(var(--clr-long-term-primary));
 }
 .box-shadow-longterm {
-  box-shadow: 2px 2px 6px var(--clr-long-term-shadow), -2px -2px 6px #ffffff;
+  box-shadow: 2px 2px 6px rgb(var(--clr-long-term-shadow)),
+    -2px -2px 6px #ffffff;
 }
 
 @media (min-width: 640px) {
