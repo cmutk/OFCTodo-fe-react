@@ -1,0 +1,46 @@
+.task-container-title {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  margin: 0px 0px 0px 0px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.task-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin-left: 8px;
+  margin-right: 8px;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: inset 3px 3px 10px #cccccc, inset -3px -3px 10px #ffffff;
+}
+.task-container > ul {
+  width: 100%;
+  height: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .task-container {
+    width: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+@media only screen and (max-width: 361px) and (orientation: portrait) {
+  .task-container {
+    width: auto;
+    height: 69%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
