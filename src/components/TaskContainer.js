@@ -7,12 +7,12 @@ function TaskContainer(props) {
     return (
         <div className="generic-column">
             <h4 className={`task-container-title color-${props.containerFor}`}>{title}</h4>
-            <div className="task-container">
+            <div className={`task-container scrollbar-thumb-${props.containerFor}`}>
                 <ul>
                 {
                 (props.tasks)&&    
                 props.tasks.map((task)=>(
-                    <TaskCard key={task.id} task={task}/>
+                    <TaskCard key={task.id} task={task} bgShadow={props.containerFor}/>
                 )
                 )
                 

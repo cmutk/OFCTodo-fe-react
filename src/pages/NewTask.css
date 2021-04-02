@@ -1,13 +1,13 @@
-::-webkit-scrollbar {
-  width: 4px;
+.newtask-container::-webkit-scrollbar {
+  width: 3px;
 }
-::-webkit-scrollbar-track {
-  margin-top: 4px;
+.newtask-container::-webkit-scrollbar-track {
+  margin-top: 0px;
   margin-bottom: 4px;
   border-radius: 4px;
   box-shadow: inset 3px 3px 6px #cccccc, inset -3px -3px 6px #ffffff;
 }
-::-webkit-scrollbar-thumb {
+.newtask-container::-webkit-scrollbar-thumb {
   background-color: rgba(var(--clr-new-task-primary), 0.85);
   border-radius: 4px;
 }
