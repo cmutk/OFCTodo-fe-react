@@ -18,11 +18,19 @@ function TaskCard({task,bgShadow}) {
             </div>
             <div className="task-card-detailed">
              <div className="task-card-detailed-times">
-             <p>{task.startsFrom}</p>
-             <p>{task.deadline}</p>
+                 <div>
+                     <span>Starts:</span>
+                     <span>Ends:</span>
+                 </div>
+                 <div>
+                     <span>{task.startsFrom}</span>
+                     <span>{task.deadline}</span>
+                </div>
+             
+             
              </div>   
             <div className="task-card-detailed-description">        
-                <p>Description:</p>
+                <span>Description:</span>
                 <p>{task.description}</p>
             </div>            
             </div>

@@ -51,8 +51,17 @@
 }
 .task-card-detailed-times {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.task-card-detailed-times > div {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0.25em 0;
+}
+.task-card-detailed-times > * > p {
+  all: unset;
 }
 .task-card-detailed-description {
   margin-top: 0.75em;
