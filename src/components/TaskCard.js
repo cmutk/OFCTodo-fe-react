@@ -1,8 +1,10 @@
 import React from 'react'
 import './TaskCard.css'
+import {DaysUntilDeadlineToDisplay} from '../components/Utilities.js'
 import { MdExpandMore } from "react-icons/md";
 function TaskCard({task,bgShadow}) {
-    
+    // console.log("Days Until Deadline:", DaysUntilDeadlineToDisplay(task.deadline))
+    const daysUntilDeadline = DaysUntilDeadlineToDisplay(task.deadline);
     return (
         <li className={`task-card-li task-card box-shadow-${bgShadow}`}>
             <div className="task-card-compact">
@@ -11,7 +13,7 @@ function TaskCard({task,bgShadow}) {
                 <p>{task.name}</p>
                 </div>
                 <div className="compact-info-detail">
-                 <p>1d</p>
+                 <p>{daysUntilDeadline}</p>
                  <MdExpandMore className="expand-icon"/>   
                 </div>
                 </div>

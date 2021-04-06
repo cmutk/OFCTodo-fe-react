@@ -1,8 +1,9 @@
 import React,{} from 'react';
-import './TaskBoard.css'
-import TaskContainer from '../components/TaskContainer.js'
+import './TaskBoard.css';
+import TaskContainer from '../components/TaskContainer.js';
 function TaskBoard(props) {
 console.log('TaskBoard Called!')
+
     return (
         <section name="task-board">
             <div className="main-container">
