@@ -1,0 +1,30 @@
+.toggle-switch-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.toggle-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+}
+.toggle-icon {
+  fill: gray;
+  font-size: 36px;
+  transform: rotateY(180deg);
+}
+.toggle-icon.on {
+  fill: rgb(var(--clr-new-task-primary));
+  transform: rotateY(0);
+}
+.toggle-content {
+  display: none;
+}
+.toggle-content.show {
+  display: block;
+}

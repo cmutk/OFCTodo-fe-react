@@ -1,15 +1,10 @@
-import React,{useState,useRef} from 'react';
+import React,{useRef} from 'react';
 import './NewTask.css';
 import InputContainer from '../components/InputContainer.js';
-import { IoToggleSharp } from "react-icons/io5";
+import TaskSteps from '../components/TaskSteps.js';
+import ToggleSwitchContainer from '../components/ToggleSwitchContainer.js'
 import {v4 as uuidv4} from 'uuid';
 function NewTask(props) {
-  const [showContent, setShowContent] = useState(false);
-  const toggle =(currentState)=>{
-    const val = (currentState ===false)?true:false
-    return setShowContent(val)
-  }
-  
   const _taskId =uuidv4();
   const taskNameInput= useRef(null);
   const startDateInput= useRef(null);
@@ -47,15 +42,13 @@ function NewTask(props) {
             <input ref={deadlineInput} type="date" id="deadline"/>
             </InputContainer>
           <h4 className="newtask-options-info">Detailed</h4>
-         
-           <label className="toggle-switch-container" htmlFor="description" onClick={()=>{toggle(showContent)}}>Description
-           <div className="toggle-icon-container"><IoToggleSharp className={`toggle-icon ${showContent?"on":""}`}/></div>
-           </label>
-          <div className={`toggle-content ${showContent?"show":""}`}>
-            <textarea ref={descriptionInput} name="description" id="description" ></textarea>
-            </div> 
-           <label className="toggle-switch-container" htmlFor="subtasks">Subtasks
-           <div className="toggle-icon-container"><IoToggleSharp className="toggle-icon"/></div></label>
+            <ToggleSwitchContainer title="Description" labelFor="description">
+              <textarea ref={descriptionInput} name="description" id="description" ></textarea>
+            </ToggleSwitchContainer>
+            <ToggleSwitchContainer title="Task Steps">
+              <TaskSteps/>
+            </ToggleSwitchContainer>
+          
            <div className="button-container">
            <button type="submit"className="btn-newtask create">Create!</button>
             <button className="btn-newtask cancel" onClick={props.onClose}>Cancel</button>

@@ -1,0 +1,36 @@
+.task-step-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.task-step-container > button {
+  all: unset;
+  height: 100%;
+  display: flex;
+  padding: 2px 10px;
+  margin-top: 0.5rem;
+}
+.task-step-container > button > * {
+  font-size: 24px;
+}
+.task-step-textarea {
+  display: flex;
+  resize: none;
+  overflow: hidden;
+  font-size: 14px;
+  padding: 8px 2px;
+  width: 90%;
+  margin-top: 0.5rem;
+  margin-left: 8px;
+  height: 34px;
+  min-height: 12px;
+  max-height: 88px;
+  border-style: none;
+  border-bottom-style: inset;
+}
+.task-step-textarea.new-task:focus {
+  outline: none;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: rgb(var(--clr-new-task-primary));
+}

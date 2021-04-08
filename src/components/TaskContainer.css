@@ -20,7 +20,7 @@
   border-radius: 4px;
 }
 .scrollbar-thumb-longterm::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--clr-longterm-primary), 0.85);
+  background-color: rgba(var(--clr-long-term-primary), 0.85);
   border-radius: 4px;
 }
 
