@@ -19,7 +19,22 @@ export function DaysUntilDeadlineToDisplay(deadlineDate){
     : label;
 }
 
-export function CalcStatus() {
-    
-    return "SomeString"; 
+
+function isTaskStatusCompletedOrCurrent(status) {
+    return status === "completed" || status === "current";
+  }
+
+function checkTaskStatusRange(deadline) {
+    const dateRangeForUrgent = 7;
+    const dayDifference = calculateDaysUntilDeadline(deadline);
+    return dayDifference > dateRangeForUrgent;
+  }
+  
+export function CalculateTaskStatus(task) {
+    const isCurrentOrCompleted = isTaskStatusCompletedOrCurrent(task.status);
+    const isLongtermOrUrgent = checkTaskStatusRange(task.deadline)
+      ? "longterm"
+      : "urgent";
+    return isCurrentOrCompleted ? task.status : isLongtermOrUrgent;
+   
 }

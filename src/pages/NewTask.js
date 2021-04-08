@@ -10,6 +10,7 @@ function NewTask(props) {
     return setShowContent(val)
   }
   
+  const _taskId =uuidv4();
   const taskNameInput= useRef(null);
   const startDateInput= useRef(null);
   const deadlineInput= useRef(null);
@@ -23,16 +24,15 @@ function NewTask(props) {
     const completed =false;
     setTasks(prevTasks=>{
       return [...prevTasks,{
-        id:uuidv4(),
+        id:_taskId,
         name:name,
         startsFrom:startsFrom,
         deadline:deadline,
         description:description,
         completed:completed}]
     })
-    
-
   }
+  
     return (
         <form onSubmit={(e)=>{e.preventDefault(); storeTask(props.setTasks)}}>
         <div className="newtask-container">
