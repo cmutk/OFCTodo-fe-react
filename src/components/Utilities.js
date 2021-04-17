@@ -13,7 +13,7 @@ export function DaysUntilDeadlineToDisplay(deadlineDate){
     const hasDeadlinePassed = Math.sign(deadlineInDays) < 0;
     const isBetweenZeroAndOne = Math.abs(deadlineInDays) < 1;
     const result = isBetweenZeroAndOne ? 1 : Math.round(Math.abs(deadlineInDays));
-   const label = result + "d"
+    const label = result + "d";
     return hasDeadlinePassed ? `-${label}` 
     : (!hasDeadlinePassed&&isBetweenZeroAndOne) ? `<${label}`
     : label;

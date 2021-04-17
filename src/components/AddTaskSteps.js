@@ -1,7 +1,6 @@
 import React,{useEffect} from 'react';
-import './TaskSteps.css';
-
-import TaskStep from './TaskStep.js'
+import './AddTaskSteps.css';
+import AddTaskStep from './AddTaskStep.js'
 function TaskSteps({taskSteps,setTaskSteps}) {
     console.log("TASK STEPS RENDERED!")
     const allTitlesFilled =[...taskSteps].every(taskStep=>{
@@ -27,7 +26,7 @@ function TaskSteps({taskSteps,setTaskSteps}) {
         <ul>{taskSteps.map((taskStep,idx)=>
             {
                 return (<li key={idx}>
-                    <TaskStep onInputChange={(e)=>simulateOnInputChange(e,idx)}taskStep={taskStep} idx={idx}/>
+                    <AddTaskStep onInputChange={(e)=>simulateOnInputChange(e,idx)}taskStep={taskStep} idx={idx}/>
                 </li>)
             }) } </ul>
         

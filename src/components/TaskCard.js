@@ -3,6 +3,7 @@ import './TaskCard.css'
 import {DaysUntilDeadlineToDisplay} from '../components/Utilities.js'
 import useToggle from './useToggle.js'
 import { MdExpandMore } from "react-icons/md";
+import { GrCheckbox } from "react-icons/gr";
 
 function TaskCard({task,bgShadow}) {
     const daysUntilDeadline = DaysUntilDeadlineToDisplay(task.deadline);
@@ -36,7 +37,31 @@ function TaskCard({task,bgShadow}) {
             <div className="task-card-detailed-description">        
                 <span>Description:</span>
                 <p>{task.description}</p>
-            </div>            
+            </div>
+            <div className="task-card-detailed-task-steps">        
+                <div className="card-task-steps-title">
+                <span>Description:</span>
+                <p>{task.steps&&task.steps.length}</p>
+                </div>
+                <div className="card-task-steps-container">
+                    <ul>{
+                (task.steps)&&    
+                task.steps.map((step)=>(
+                    <li key={step.id} >
+                        <div className={`card-task-step box-shadow-${bgShadow}`}>
+                        <GrCheckbox className="card-task-step-icon"/>      
+                        <span className="card-task-step-title">{step.title}</span>
+                        </div>
+                        
+                        </li>
+                    
+                )
+                )
+                
+                }
+                    </ul>
+                </div>
+            </div>                      
             </div>
         
     </li>

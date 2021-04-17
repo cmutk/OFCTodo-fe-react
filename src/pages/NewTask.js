@@ -1,7 +1,7 @@
 import React,{useState,useRef} from 'react';
 import './NewTask.css';
 import InputContainer from '../components/InputContainer.js';
-import TaskSteps from '../components/TaskSteps.js';
+import AddTaskSteps from '../components/AddTaskSteps.js';
 import ToggleSwitchContainer from '../components/ToggleSwitchContainer.js'
 import {v4 as uuidv4} from 'uuid';
 function NewTask(props) {
@@ -53,7 +53,7 @@ function NewTask(props) {
               <textarea ref={descriptionInput} name="description" id="description" ></textarea>
             </ToggleSwitchContainer>
             <ToggleSwitchContainer title="Task Steps">
-              <TaskSteps taskSteps={taskSteps} setTaskSteps={setTaskSteps}/>
+              <AddTaskSteps taskSteps={taskSteps} setTaskSteps={setTaskSteps}/>
             </ToggleSwitchContainer>
           
            <div className="button-container">

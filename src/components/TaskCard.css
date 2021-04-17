@@ -76,3 +76,30 @@
 .task-card-detailed-description > p {
   margin: 0.5em 0;
 }
+.card-task-steps-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-task-steps-container {
+  padding: 0.5em;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: inset 3px 3px 10px #cccccc, inset -3px -3px 10px #ffffff;
+}
+.card-task-step {
+  padding: 16px;
+  margin: 0.5em 0px;
+  border-style: outset;
+  border-width: thin;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.card-task-step-icon {
+  font-size: 18px;
+}
+.card-task-step-title {
+  margin-left: 0.75em;
+}
