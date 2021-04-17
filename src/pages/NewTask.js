@@ -1,22 +1,25 @@
-import React,{useRef} from 'react';
+import React,{useState,useRef} from 'react';
 import './NewTask.css';
 import InputContainer from '../components/InputContainer.js';
 import TaskSteps from '../components/TaskSteps.js';
 import ToggleSwitchContainer from '../components/ToggleSwitchContainer.js'
 import {v4 as uuidv4} from 'uuid';
 function NewTask(props) {
+  console.log("NewTask Rendered")
   const _taskId =uuidv4();
   const taskNameInput= useRef(null);
   const startDateInput= useRef(null);
   const deadlineInput= useRef(null);
   const descriptionInput = useRef(null);
-  
+  const [taskSteps,setTaskSteps]=useState([]);
+
   const storeTask =(setTasks)=>{
     const name=taskNameInput.current.value;
     const startsFrom=startDateInput.current.value;
     const deadline=deadlineInput.current.value;
     const description =descriptionInput.current.value;
     const completed =false;
+    const steps=taskSteps.filter(taskStep=>{return taskStep.title!==""});
     setTasks(prevTasks=>{
       return [...prevTasks,{
         id:_taskId,
@@ -24,7 +27,11 @@ function NewTask(props) {
         startsFrom:startsFrom,
         deadline:deadline,
         description:description,
-        completed:completed}]
+        completed:completed,
+        steps:steps
+      },
+        
+      ]
     })
   }
   
@@ -46,12 +53,12 @@ function NewTask(props) {
               <textarea ref={descriptionInput} name="description" id="description" ></textarea>
             </ToggleSwitchContainer>
             <ToggleSwitchContainer title="Task Steps">
-              <TaskSteps/>
+              <TaskSteps taskSteps={taskSteps} setTaskSteps={setTaskSteps}/>
             </ToggleSwitchContainer>
           
            <div className="button-container">
            <button type="submit"className="btn-newtask create">Create!</button>
-            <button className="btn-newtask cancel" onClick={props.onClose}>Cancel</button>
+            <button type="reset" className="btn-newtask cancel" onClick={props.onClose}>Cancel</button>
            </div>
             
         </div>
