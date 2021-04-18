@@ -1,13 +1,13 @@
-import React from 'react'
-import './TaskCard.css'
-import {DaysUntilDeadlineToDisplay} from '../components/Utilities.js'
-import useToggle from './useToggle.js'
-import { MdExpandMore } from "react-icons/md";
+import React from 'react';
+import './TaskCard.css';
+import { DaysUntilDeadlineToDisplay } from '../components/Utilities.js';
+import useToggle from './useToggle.js';
+import { MdExpandMore,MdAdd,MdDelete,MdCheck } from "react-icons/md";
 import { GrCheckbox } from "react-icons/gr";
 
-function TaskCard({task,bgShadow}) {
+function TaskCard({task,bgShadow,onRemove}) {
     const daysUntilDeadline = DaysUntilDeadlineToDisplay(task.deadline);
-    const [showContent,showContentActions]= useToggle(false)
+    const [showContent,showContentActions]= useToggle(false);
     return (
         <li className={`task-card-li task-card box-shadow-${bgShadow}`}>
             <div className="task-card-compact" onClick={showContentActions.toggle}>
@@ -34,14 +34,16 @@ function TaskCard({task,bgShadow}) {
              
              
              </div>   
+            {task.description&&
             <div className="task-card-detailed-description">        
                 <span>Description:</span>
                 <p>{task.description}</p>
-            </div>
+            </div>}
+
             <div className="task-card-detailed-task-steps">        
                 <div className="card-task-steps-title">
-                <span>Description:</span>
-                <p>{task.steps&&task.steps.length}</p>
+                <span>Steps:</span>
+                <p>{task.steps&&task.steps.length} Left</p>
                 </div>
                 <div className="card-task-steps-container">
                     <ul>{
@@ -52,8 +54,7 @@ function TaskCard({task,bgShadow}) {
                         <GrCheckbox className="card-task-step-icon"/>      
                         <span className="card-task-step-title">{step.title}</span>
                         </div>
-                        
-                        </li>
+                    </li>
                     
                 )
                 )
@@ -62,8 +63,14 @@ function TaskCard({task,bgShadow}) {
                     </ul>
                 </div>
             </div>                      
-            </div>
-        
+            <div className="task-card-detailed-controls">
+                <button className="card-detailed-controls-button" type="button" onClick={()=>onRemove(task.id)}><MdDelete/></button>
+                <button className="card-detailed-controls-button" type="button"><MdAdd/></button>
+                <button className="card-detailed-controls-button" type="button"><MdCheck/></button>
+               
+            </div>    
+        </div>
+            
     </li>
     )
 }

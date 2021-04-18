@@ -24,7 +24,7 @@ function App() {
       <Navbar right={<button onClick={()=>{setShow(true)}}> New Task !</button>}/>
       <ModalLarge content={<NewTask onClose={closeModal} setTasks={setTasks}/>} headerOf="newtask" title="New Task" show={show} onClose={closeModal}/>
         <Switch>
-          <Route path="/" exact render={(props)=>(<TaskBoard {...props} tasks={tasks} />)} />
+          <Route path="/" exact render={(props)=>(<TaskBoard {...props} setTasks={setTasks} tasks={tasks} />)} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
         </Switch>

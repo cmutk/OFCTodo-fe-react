@@ -12,7 +12,7 @@ function TaskContainer(props) {
                 {
                 (props.tasks)&&    
                 props.tasks.map((task)=>(
-                    <TaskCard key={task.id} task={task} bgShadow={props.containerFor}/>
+                    <TaskCard key={task.id} onRemove={props.onRemove} task={task} bgShadow={props.containerFor}/>
                 )
                 )
                 

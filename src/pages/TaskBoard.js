@@ -9,15 +9,18 @@ const allTasks = props.tasks;
     const taskStatus = CalculateTaskStatus(task);
     task.status = taskStatus;
 })
-
+function handleRemove(id){
+    const newList = props.tasks.filter((task)=>task.id!==id);
+    props.setTasks(newList);
+}
     return (
         <section name="task-board">
             <div className="main-container">
                 <div className="main-row">
-                <TaskContainer tasks={allTasks.filter(task=>task.status==="completed")} containerFor="completed"></TaskContainer>
-                <TaskContainer tasks={allTasks.filter(task=>task.status==="current")} containerFor="current"></TaskContainer>
-                <TaskContainer tasks={allTasks.filter(task=>task.status==="urgent")} containerFor="urgent"></TaskContainer>
-                <TaskContainer tasks={allTasks.filter(task=>task.status==="longterm")} containerFor="longterm"></TaskContainer>
+                <TaskContainer onRemove={handleRemove} tasks={allTasks.filter(task=>task.status==="completed")} containerFor="completed"></TaskContainer>
+                <TaskContainer onRemove={handleRemove} tasks={allTasks.filter(task=>task.status==="current")} containerFor="current"></TaskContainer>
+                <TaskContainer onRemove={handleRemove} tasks={allTasks.filter(task=>task.status==="urgent")} containerFor="urgent"></TaskContainer>
+                <TaskContainer onRemove={handleRemove} tasks={allTasks.filter(task=>task.status==="longterm")} containerFor="longterm"></TaskContainer>
                 </div>
             </div>
         </section>

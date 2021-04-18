@@ -103,3 +103,18 @@
 .card-task-step-title {
   margin-left: 0.75em;
 }
+.task-card-detailed-controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.card-detailed-controls-button {
+  all: unset;
+  padding: 14px;
+  font-size: 24px;
+  border-radius: 50%;
+  box-shadow: 4px 4px 6px #e6e6e6, -4px -4px 6px #ffffff;
+  transform: scale(1);
+  transition: transform 200ms ease-in-out;
+}
