@@ -2,10 +2,11 @@ import React from 'react';
 import './TaskCard.css';
 import { DaysUntilDeadlineToDisplay } from '../components/Utilities.js';
 import useToggle from './useToggle.js';
+import {ACTIONS} from '../App.js'
 import { MdExpandMore,MdAdd,MdDelete,MdCheck } from "react-icons/md";
 import { GrCheckbox } from "react-icons/gr";
 
-function TaskCard({task,bgShadow,onRemove}) {
+function TaskCard({task,bgShadow,dispatch}) {
     const daysUntilDeadline = DaysUntilDeadlineToDisplay(task.deadline);
     const [showContent,showContentActions]= useToggle(false);
     return (
@@ -64,9 +65,9 @@ function TaskCard({task,bgShadow,onRemove}) {
                 </div>
             </div>                      
             <div className="task-card-detailed-controls">
-                <button className="card-detailed-controls-button" type="button" onClick={()=>onRemove(task.id)}><MdDelete/></button>
+                <button className="card-detailed-controls-button" type="button" onClick={()=>dispatch({type:ACTIONS.DELETE_TASK, payload:{id:task.id}})}><MdDelete/></button>
                 <button className="card-detailed-controls-button" type="button"><MdAdd/></button>
-                <button className="card-detailed-controls-button" type="button"><MdCheck/></button>
+                <button className="card-detailed-controls-button" type="button" onClick={()=>dispatch({type:ACTIONS.COMPLETE_TASK, payload:{id:task.id}})}><MdCheck/></button>
                
             </div>    
         </div>
