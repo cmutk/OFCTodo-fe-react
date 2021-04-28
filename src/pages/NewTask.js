@@ -4,7 +4,7 @@ import InputContainer from '../components/InputContainer.js';
 import AddTaskSteps from '../components/AddTaskSteps.js';
 import ToggleSwitchContainer from '../components/ToggleSwitchContainer.js'
 import {v4 as uuidv4} from 'uuid';
-import {ACTIONS} from '../App.js'
+import {ACTIONS} from './TaskBoard.js'
 function NewTask({onClose,dispatch}) {
   console.log("NewTask Rendered")
   const _taskId =uuidv4();
@@ -19,7 +19,6 @@ function NewTask({onClose,dispatch}) {
     const startsFrom = startDateInput.current.value;
     const deadline=deadlineInput.current.value;
     const description =descriptionInput.current.value;
-    const completed =false;
     const steps=taskSteps.filter(taskStep=>{return taskStep.title!==""});
     return {
       id:_taskId,
@@ -27,7 +26,6 @@ function NewTask({onClose,dispatch}) {
       startsFrom:startsFrom,
       deadline:deadline,
       description:description,
-      completed:completed,
       steps:steps
     }
   }

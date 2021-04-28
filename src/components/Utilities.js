@@ -24,7 +24,7 @@ function isTaskStatusCompletedOrCurrent(status) {
     return status === "completed" || status === "current";
   }
 
-function checkTaskStatusRange(deadline) {
+export function checkTaskStatusRange(deadline) {
     const dateRangeForUrgent = 7;
     const dayDifference = calculateDaysUntilDeadline(deadline);
     return dayDifference > dateRangeForUrgent;
