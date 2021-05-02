@@ -8,12 +8,13 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 function App() {  
   const [showModal, setShowModal] = useState(false);
   const closeModal=()=> {setShowModal(false)};
+  const openModal =()=>{setShowModal(true)};
   console.log("APP CALLED!")
   
   return (
     <main className="App">
       <Router>
-      <Navbar right={<button onClick={()=>{setShowModal(true)}}> New Task !</button>}/>
+      <Navbar right={<button onClick={openModal}> New Task !</button>}/>
       
         <Switch>
           <Route path="/" exact render={()=>(<TaskBoard showModal={showModal} onClose={closeModal} />)} />

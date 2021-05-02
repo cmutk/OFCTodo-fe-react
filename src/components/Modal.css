@@ -44,11 +44,6 @@
   z-index: 700;
   padding: 1rem, 2rem, 3rem, 2rem;
 }
-.modal-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 
 @media only screen and (max-width: 767px) {
   .modal.lg {

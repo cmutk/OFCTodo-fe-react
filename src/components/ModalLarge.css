@@ -35,3 +35,9 @@
   background-color: #ffffff40;
   transform: scale(1.1);
 }
+.modal-container {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: 100%;
+}

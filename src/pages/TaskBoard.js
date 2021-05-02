@@ -1,7 +1,8 @@
-import React,{useState,useEffect,useReducer} from 'react';
+import React,{useState,useRef,useEffect,useReducer} from 'react';
 import './TaskBoard.css';
 import NewTask from './NewTask.js';
 import ModalLarge from '../components/ModalLarge.js';
+import ConfirmBox from '../components/ConfirmBox.js';
 import TaskContainer from '../components/TaskContainer.js';
 import {CalculateTaskStatus,checkTaskStatusRange} from '../components/Utilities.js';
 import {DragDropContext} from 'react-beautiful-dnd';
@@ -10,6 +11,7 @@ export const ACTIONS={
     ADD_TASK:"add-task",
     DELETE_TASK:"delete-task",
     CHANGE_TASK_STATUS_WITH:"change-task-status-with",
+    CHANGE_TASK_DEADLINE:"change-task-deadline",
     CALCULATE_ALL_TASKS_STATUS:"calculate-all-tasks-status",
     REPLACE_TASKS_WITH_REORDERED:"replace-tasks-with-reordered",
   }
@@ -30,7 +32,13 @@ function reducer(tasks,action){
           }
           return task;
       })
-
+      case ACTIONS.CHANGE_TASK_DEADLINE:
+        return tasks.map((task)=>{
+          if(task.id===action.payload.id){
+            return {...task,deadline:action.payload.deadline};
+          }
+          return task;
+      })
       case ACTIONS.CALCULATE_ALL_TASKS_STATUS:
         return tasks.map((task)=>{
             const taskStatus = CalculateTaskStatus(task);
@@ -59,9 +67,9 @@ function TaskBoard({showModal,onClose}) {
 
     console.log('TaskBoard Called!');
     console.log("AllTasks :",tasks);
-
-
-
+const [showConfirmBox, setShowConfirmBox] = useState(false);
+const openConfirmBox=()=>{setShowConfirmBox(true)};
+const closeConfirmBox=()=>{setShowConfirmBox(false)};
 const [cardOrders, updateCardOrders] = useState([]);
 useEffect(()=>{
   
@@ -92,21 +100,37 @@ function reorderAndSaveTasks({source,destination}){
   const flattenedResult=[].concat(...multipleResult)
   dispatch({type:ACTIONS.REPLACE_TASKS_WITH_REORDERED, payload:{reorderedTasks:flattenedResult}})
 }
-function applyTaskStatusChange(taskId,nextStatus){
-  console.log("applyTaskStatusChange",taskId,nextStatus)
-  dispatch({type:ACTIONS.CHANGE_TASK_STATUS_WITH, payload:{id:taskId,status:nextStatus}})
-}
+
+
 
 const isConfirmationRequired=(nextStatus)=>nextStatus==="current"?false:true;  
+const applyTaskStatusChange=(taskId,nextStatus)=>{dispatch({type:ACTIONS.CHANGE_TASK_STATUS_WITH, payload:{id:taskId,status:nextStatus}})}
 const isDateRelated =(nextStatus)=>nextStatus==="completed"?false:true;
-function askUserPermission({prevStatus,nextStatus,taskId}){
-console.log("isDateRelated",isDateRelated(nextStatus));
+
+const [messageBoxContent, setMessageBoxContent] = useState([]);
+const [_taskId,_nextStatus,_message,_sideMassage,_hasDateField]=messageBoxContent;
+const deadlineInput = useRef(null)
+const determineMessageBoxContent=({nextStatus,taskId})=>{
+  const message=`Do you want to send this task to ${nextStatus}`;
+  const sideMessage = nextStatus==="completed"? "The task will be completed.":"To do this, you need to change deadline."
+  const hasDateField= isDateRelated(nextStatus);
+  setMessageBoxContent([taskId,nextStatus,message,sideMessage,hasDateField]);
+  openConfirmBox();
 }
+const askUserPermission=({nextStatus,taskId})=>{determineMessageBoxContent({nextStatus,taskId});}
 function handleTaskStatusChange({prevStatus,nextStatus,taskId}){
 (!isConfirmationRequired(nextStatus))?applyTaskStatusChange(taskId,nextStatus):askUserPermission({prevStatus,nextStatus,taskId})
-
-
-console.log("handleTaskStatusChangeHere:",isConfirmationRequired(nextStatus))
+}
+function applyDeadlineChange(_taskId,deadline){
+  dispatch({type:ACTIONS.CHANGE_TASK_DEADLINE, payload:{id:_taskId,deadline:deadline}})
+}
+function handleOnConfirm(){
+  if(!_hasDateField){applyTaskStatusChange(_taskId,_nextStatus);}
+  else {
+    const deadline =deadlineInput.current.value;
+    applyDeadlineChange(_taskId,deadline);
+  }
+  closeConfirmBox()
 }
 function handleDragEnd(result){
     const {source,destination,draggableId}=result;
@@ -119,6 +143,13 @@ function handleDragEnd(result){
     return (
         <section name="task-board">
             <ModalLarge content={<NewTask onClose={onClose} dispatch={dispatch}/>} headerOf="newtask" title="New Task" show={showModal} onClose={onClose}/>
+            <ConfirmBox show={showConfirmBox} onConfirm={handleOnConfirm} onCancel={closeConfirmBox}>
+            <>
+             <h5>{_message}</h5>
+             {_hasDateField&&<input type="date" ref={deadlineInput}/>}
+             <p>*{_sideMassage}</p>
+            </>
+            </ConfirmBox>
             <div className="main-container">
                 <div className="main-row">
                 <DragDropContext onDragEnd={handleDragEnd}>

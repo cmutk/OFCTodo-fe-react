@@ -16,7 +16,7 @@ function Modal(props) {
         <aside>
             <div className={`overlay ${props.show ?"show":""}`} onClick={props.onClose}>&nbsp;</div>
             <div className={`modal ${props.size} ${props.show ?"show":""}`} onClick={(e)=>e.stopPropagation()}>
-                <div className="modal-container">{props.children}</div>
+               {props.children}
             </div>
         </aside>
     )

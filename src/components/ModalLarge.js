@@ -21,7 +21,8 @@ function ModalLarge(props) {
           </button>
           </div> 
         </Header>
-        {props.content}
+        <div className="modal-container">{props.content}</div>
+        
       </Modal>
     </>
         
