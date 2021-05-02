@@ -128,7 +128,8 @@ function handleOnConfirm(){
   if(!_hasDateField){applyTaskStatusChange(_taskId,_nextStatus);}
   else {
     const deadline =deadlineInput.current.value;
-    applyDeadlineChange(_taskId,deadline);
+    applyDeadlineChange(_taskId,deadline)&&dispatch({type:ACTIONS.CALCULATE_ALL_TASKS_STATUS});
+    applyTaskStatusChange(_taskId,_nextStatus);
   }
   closeConfirmBox()
 }
