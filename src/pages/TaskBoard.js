@@ -19,7 +19,7 @@ export const ACTIONS={
 function reducer(tasks,action){
     switch(action.type){
       case ACTIONS.ADD_TASK:
-      console.log(action.payload.task)
+      // console.log(action.payload.task)
         return [...tasks,action.payload.task];
 
       case ACTIONS.DELETE_TASK:
@@ -47,8 +47,7 @@ function reducer(tasks,action){
         })
 
       case ACTIONS.REPLACE_TASKS_WITH_REORDERED:
-        const reordered=action.payload.reorderedTasks ;
-        console.log("reordered here:",reordered);    
+        const reordered=action.payload.reorderedTasks ; 
         return reordered;
       default:
         return tasks;
@@ -68,11 +67,8 @@ function TaskBoard({showModal,onClose}) {
     console.log('TaskBoard Called!');
     console.log("AllTasks :",tasks);
 const [showConfirmBox, setShowConfirmBox] = useState(false);
-const openConfirmBox=()=>{setShowConfirmBox(true)};
-const closeConfirmBox=()=>{setShowConfirmBox(false)};
 const [cardOrders, updateCardOrders] = useState([]);
 useEffect(()=>{
-  
   const CONTAINER_NAMES=["completed","current","urgent","longterm"];
   updateCardOrders(
   ()=>{return CONTAINER_NAMES.map(containerName=>{
@@ -85,7 +81,6 @@ const CONTAINER_INDICES ={completed:0,current:1,urgent:2,longterm:3};
 const findContainerIndex=(name)=>{
   return CONTAINER_INDICES[`${name}`]
 }
-console.log("card orders here",cardOrders);
 const reorderMultiple=({list,source,destination})=>{
   const result=Array.from(list);
   const sourceContainerIndex=findContainerIndex(source.droppableId);
@@ -101,37 +96,38 @@ function reorderAndSaveTasks({source,destination}){
   dispatch({type:ACTIONS.REPLACE_TASKS_WITH_REORDERED, payload:{reorderedTasks:flattenedResult}})
 }
 
-
-
-const isConfirmationRequired=(nextStatus)=>nextStatus==="current"?false:true;  
-const applyTaskStatusChange=(taskId,nextStatus)=>{dispatch({type:ACTIONS.CHANGE_TASK_STATUS_WITH, payload:{id:taskId,status:nextStatus}})}
-const isDateRelated =(nextStatus)=>nextStatus==="completed"?false:true;
-
 const [messageBoxContent, setMessageBoxContent] = useState([]);
 const [_taskId,_nextStatus,_message,_sideMassage,_hasDateField]=messageBoxContent;
 const deadlineInput = useRef(null)
 const determineMessageBoxContent=({nextStatus,taskId})=>{
   const message=`Do you want to send this task to ${nextStatus}`;
   const sideMessage = nextStatus==="completed"? "The task will be completed.":"To do this, you need to change deadline."
-  const hasDateField= isDateRelated(nextStatus);
+  const hasDateField= nextStatus==="completed"?false:true;
   setMessageBoxContent([taskId,nextStatus,message,sideMessage,hasDateField]);
-  openConfirmBox();
+  setShowConfirmBox(true)
 }
-const askUserPermission=({nextStatus,taskId})=>{determineMessageBoxContent({nextStatus,taskId});}
+
+function applyTaskStatusChange(taskId,nextStatus){
+  dispatch({type:ACTIONS.CHANGE_TASK_STATUS_WITH, payload:{id:taskId,status:nextStatus}})
+}
+function askUserPermission({nextStatus,taskId}){
+  determineMessageBoxContent({nextStatus,taskId});
+}
 function handleTaskStatusChange({prevStatus,nextStatus,taskId}){
-(!isConfirmationRequired(nextStatus))?applyTaskStatusChange(taskId,nextStatus):askUserPermission({prevStatus,nextStatus,taskId})
+  const isConfirmationRequired=nextStatus==="current"?false:true; 
+  (!isConfirmationRequired)?applyTaskStatusChange(taskId,nextStatus):askUserPermission({prevStatus,nextStatus,taskId})
 }
 function applyDeadlineChange(_taskId,deadline){
-  dispatch({type:ACTIONS.CHANGE_TASK_DEADLINE, payload:{id:_taskId,deadline:deadline}})
+  dispatch({type:ACTIONS.CHANGE_TASK_DEADLINE, payload:{id:_taskId,deadline:deadline}})&&dispatch({type:ACTIONS.CALCULATE_ALL_TASKS_STATUS})
 }
 function handleOnConfirm(){
   if(!_hasDateField){applyTaskStatusChange(_taskId,_nextStatus);}
   else {
     const deadline =deadlineInput.current.value;
-    applyDeadlineChange(_taskId,deadline)&&dispatch({type:ACTIONS.CALCULATE_ALL_TASKS_STATUS});
+    applyDeadlineChange(_taskId,deadline);
     applyTaskStatusChange(_taskId,_nextStatus);
   }
-  closeConfirmBox()
+  setShowConfirmBox(false)
 }
 function handleDragEnd(result){
     const {source,destination,draggableId}=result;
@@ -144,7 +140,7 @@ function handleDragEnd(result){
     return (
         <section name="task-board">
             <ModalLarge content={<NewTask onClose={onClose} dispatch={dispatch}/>} headerOf="newtask" title="New Task" show={showModal} onClose={onClose}/>
-            <ConfirmBox show={showConfirmBox} onConfirm={handleOnConfirm} onCancel={closeConfirmBox}>
+            <ConfirmBox show={showConfirmBox} onConfirm={handleOnConfirm} onCancel={()=>{setShowConfirmBox(false)}}>
             <>
              <h5>{_message}</h5>
              {_hasDateField&&<input type="date" ref={deadlineInput}/>}

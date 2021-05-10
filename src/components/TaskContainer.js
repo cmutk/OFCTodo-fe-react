@@ -4,7 +4,7 @@ import TaskCard from './TaskCard.js';
 import {Droppable,Draggable} from 'react-beautiful-dnd';
 function TaskContainer(props) {
     const title = props.containerFor.charAt(0).toUpperCase() + props.containerFor.slice(1)+" Tasks";
-    console.log(props.tasks)
+    console.log("TASK CONTAINER HERE")
 
     return (
         
