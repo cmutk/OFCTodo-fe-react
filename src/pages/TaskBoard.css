@@ -1,0 +1,29 @@
+.main-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100vh;
+  align-content: space-between;
+  font-size: 1rem;
+  margin: 0px;
+}
+.main-row {
+  display: flex;
+  flex: 1;
+  height: 100%;
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+@media only screen and (max-width: 767px) {
+  .main-container {
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    height: 100%;
+    margin-left: 0;
+  }
+  .main-row {
+    height: 100vh;
+  }
+}

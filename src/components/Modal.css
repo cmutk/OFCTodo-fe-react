@@ -1,0 +1,80 @@
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  z-index: 200;
+}
+.overlay.show {
+  display: block;
+}
+.modal {
+  position: fixed;
+  width: auto;
+  overflow-y: hidden;
+  min-height: 10rem;
+  background: white;
+  box-shadow: 2px, 2px, 2px, rgba(0, 0, 0);
+  transition: transform 500ms ease-in;
+  transform: scale(0);
+}
+
+.modal.show {
+  transform: scale(1);
+}
+.modal.lg {
+  top: 5%;
+  bottom: 5%;
+  left: 37vw;
+  right: 37vw;
+  max-height: 800px;
+  z-index: 300;
+  padding: 1rem, 2rem, 3rem, 2rem;
+}
+.modal.sm {
+  top: 35%;
+  bottom: auto;
+  left: 40vw;
+  right: 40vw;
+  max-height: 800px;
+  z-index: 700;
+  padding: 1rem, 2rem, 3rem, 2rem;
+}
+
+@media only screen and (max-width: 767px) {
+  .modal.lg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100vh;
+  }
+  .modal.md {
+    display: block;
+    top: 25%;
+    bottom: 25%;
+    left: 20%;
+    right: 20%;
+    max-height: 480px;
+    z-index: 500;
+    border-radius: 8px;
+    border: 1px solid var(--clr-header-primary);
+  }
+  .modal.sm {
+    top: 25%;
+    bottom: auto;
+    left: 10vw;
+    right: 10vw;
+    max-height: 800px;
+    z-index: 700;
+    padding: 1rem, 2rem, 3rem, 2rem;
+  }
+}
+/* @media only screen and (max-width: 361px) and (orientation: portrait){
+  
+} */

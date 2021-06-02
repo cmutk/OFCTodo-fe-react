@@ -1,0 +1,43 @@
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+  font-weight: bold;
+}
+.header-title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 14px 16px;
+}
+.header-title-container > h4 {
+  cursor: default;
+  font-family: "Merienda One", cursive;
+  font-size: 1rem;
+}
+.expand-icon {
+  font-size: 24px;
+  padding: 0px 4px;
+}
+.close-button {
+  all: unset;
+  display: flex;
+  padding: 6px;
+  margin: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
+  transition: transform 200ms ease-in-out;
+  transform: scale(1);
+}
+.close-button:hover {
+  background-color: #ffffff40;
+  transform: scale(1.1);
+}
+.modal-container {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  height: 100%;
+}

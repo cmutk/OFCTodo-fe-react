@@ -1,0 +1,11 @@
+header {
+  overflow: hidden;
+  border-bottom-left-radius: 8px;
+  min-height: 52px;
+}
+
+/* @media only screen and (max-width: 767px) {
+  header {
+    min-height: 52px;
+  }
+} */

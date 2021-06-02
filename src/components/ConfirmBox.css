@@ -1,0 +1,41 @@
+.confirm-box-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 16px;
+}
+
+.message-box {
+  flex-grow: 2;
+  padding: 0px 32px 8px 32px;
+}
+.message-box > h5 {
+  font-size: 16px;
+  margin: 0;
+}
+.message-box > p {
+  display: block;
+  margin: 8px 0px;
+  text-align: center;
+  font-size: 16px;
+  font-style: italic;
+}
+.message-box > input {
+  width: 100%;
+  margin-top: 0.5rem;
+  display: block;
+  float: inline-start;
+}
+.confirm-box-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.confirm-box-buttons > button {
+  all: unset;
+  padding: 14px 16px;
+  box-shadow: 4px 4px 6px #e6e6e6, -4px -4px 6px #ffffff;
+  font-size: 16px;
+}

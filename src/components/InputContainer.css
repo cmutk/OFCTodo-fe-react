@@ -1,0 +1,36 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+}
+.input-container > input {
+  margin-top: 0.5rem;
+}
+.input-container > label {
+  cursor: pointer;
+}
+.message {
+  font-size: 12px;
+  margin-top: 6px;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.input-container.error {
+  color: #c71d14;
+  font-weight: bold;
+}
+.input-container.error > input {
+  border: 1px solid #c71d14;
+  outline: 1px solid #c71d14;
+  color: #c71d14;
+}
+.input-container.valid {
+  color: #229400;
+  font-weight: bold;
+}
+.input-container.valid > input {
+  border: 1px solid #229400;
+  color: #229400;
+  outline: 1px solid #229400;
+}

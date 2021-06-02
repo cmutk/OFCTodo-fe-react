@@ -1,0 +1,75 @@
+.newtask-container::-webkit-scrollbar {
+  width: 3px;
+}
+.newtask-container::-webkit-scrollbar-track {
+  margin-top: 0px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  box-shadow: inset 3px 3px 6px #cccccc, inset -3px -3px 6px #ffffff;
+}
+.newtask-container::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--clr-new-task-primary), 0.85);
+  border-radius: 4px;
+}
+form {
+  display: contents;
+  margin: 0px;
+}
+.newtask-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: auto;
+  font-size: 1rem;
+  overflow-y: scroll;
+}
+.newtask-container > .input-container > input:focus {
+  border: 1px solid rgb(var(--clr-new-task-primary));
+  outline: 1px solid rgb(var(--clr-new-task-primary));
+}
+.newtask-options-info {
+  font-weight: bold;
+  margin-top: 3rem;
+  padding-bottom: 8px;
+  border-bottom: 1px #000 solid;
+}
+
+#description {
+  height: 30vh;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+#description:focus {
+  border: 1px solid rgb(var(--clr-new-task-primary));
+  outline: 1px solid rgb(var(--clr-new-task-primary));
+}
+.button-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.btn-newtask {
+  all: unset;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 24px;
+  box-sizing: border-box;
+  padding: 14px 0px;
+  margin-top: 16px;
+  text-align: center;
+  transition: 200ms ease-in-out;
+  transform: scale(1);
+}
+.btn-newtask:hover {
+  transform: scale(1.05);
+}
+.create {
+  color: white;
+  background-color: rgb(var(--clr-new-task-primary));
+}
+.cancel {
+  border: 1px solid rgb(var(--clr-new-task-primary));
+  color: rgb(var(--clr-new-task-primary));
+}
