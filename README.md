@@ -1,7 +1,7 @@
 # OFCTODO React (WIP)
 ## React implemantation of [OFCTodo](https://github.com/cmutk/OFCTodo)
 
-I worked off of OFC TODO (a vanilla js d&d TODO app) and reforged it with React 
+I worked off of OFCTodo (a vanilla js d&d TODO app) and reforged it with React 
 
 <img width="1261" alt="Screen Shot 2021-07-09 at 02 17 37" src="https://user-images.githubusercontent.com/26392038/125001668-ded3cb80-e05b-11eb-8839-393a442daf4d.png">
 
